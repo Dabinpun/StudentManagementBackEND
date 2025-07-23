@@ -5,6 +5,7 @@ import com.example.StudentManagementBackEnd.repository.StudentRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -21,4 +22,22 @@ public class StudentService {
     public Student create(Student student){
         return studentRepo.save(student);
     }
+
+    public Optional<Student> findById(int id){
+        return studentRepo.findById(id);
+    }
+
+    public Student update(int id,Student student){
+        Student studentToUpdate =studentRepo.findById(id).orElse(null);
+        if(studentToUpdate != null){
+            studentToUpdate.setId(student.getId());
+            studentToUpdate.setName(student.getName());
+            studentToUpdate.setSection(student.getSection());
+            studentToUpdate.setEmail(student.getEmail());
+            return studentToUpdate;
+        }else {
+            return null;
+        }
+    }
+
 }

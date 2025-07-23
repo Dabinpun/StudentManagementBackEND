@@ -7,9 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class StudentManagementBackEndApplication {
 
 	public static void main(String[] args) {
-
-		System.out.println("hiii");
 		SpringApplication.run(StudentManagementBackEndApplication.class, args);
+		System.out.println("hiii");
 	}
 
 }
