@@ -30,14 +30,16 @@ public class StudentService {
     public Student update(int id,Student student){
         Student studentToUpdate =studentRepo.findById(id).orElse(null);
         if(studentToUpdate != null){
-            studentToUpdate.setId(student.getId());
             studentToUpdate.setName(student.getName());
             studentToUpdate.setSection(student.getSection());
             studentToUpdate.setEmail(student.getEmail());
-            return studentToUpdate;
+            return studentRepo.save(studentToUpdate);
         }else {
             return null;
         }
+    }
+    public void delete(int id ){
+        studentRepo.deleteById(id);
     }
 
 }

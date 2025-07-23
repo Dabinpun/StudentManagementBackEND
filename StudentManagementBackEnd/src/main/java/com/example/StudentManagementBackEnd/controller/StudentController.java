@@ -35,10 +35,13 @@ public class StudentController {
         return studentService.findById(id);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public  Student update(@PathVariable int id, @RequestBody Student student){
         return studentService.update(id,student);
     }
-
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable int id ){
+        studentService.delete(id);
+    }
 
 }
